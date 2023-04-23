@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gulimall-coupon" />
+        <module name="gulimall-order" />
+        <module name="gulimall-ware" />
+        <module name="gulimall-member" />
+        <module name="gulimall-product" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gulimall-coupon" target="17" />
+      <module name="gulimall-member" target="17" />
+      <module name="gulimall-order" target="17" />
+      <module name="gulimall-product" target="17" />
+      <module name="gulimall-ware" target="17" />
+      <module name="start" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
