@@ -1,5 +1,6 @@
 package com.atguigu.gulimall.coupon.service.impl;
 
+import com.alibaba.nacos.common.utils.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -20,12 +21,19 @@ public class SeckillSkuRelationServiceImpl extends ServiceImpl<SeckillSkuRelatio
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper<SeckillSkuRelationEntity> queryWrapper = new QueryWrapper<SeckillSkuRelationEntity>();
+        String promotionSessionId = (String) params.get("promotionSessionId");
+        // 2、封装活动场次id，关联
+        if (!StringUtils.isEmpty(promotionSessionId)) {
+            queryWrapper.eq("promotion_session_id", promotionSessionId);
+        }
         IPage<SeckillSkuRelationEntity> page = this.page(
                 new Query<SeckillSkuRelationEntity>().getPage(params),
-                new QueryWrapper<SeckillSkuRelationEntity>()
+                queryWrapper
         );
 
         return new PageUtils(page);
     }
+
 
 }

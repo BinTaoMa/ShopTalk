@@ -4,12 +4,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 
+import com.atguigu.gulimall.product.service.SpuInfoService;
+import com.atguigu.gulimall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.gulimall.product.entity.SkuInfoEntity;
 import com.atguigu.gulimall.product.service.SkuInfoService;
@@ -30,10 +28,24 @@ import com.atguigu.common.utils.R;
 public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
+    @Autowired
+    private SpuInfoService spuInfoService;
 
     /**
      * 列表
      */
+
+    @GetMapping("/{skuId}/price")
+    public R getPrice(@PathVariable("skuId") Long skuId){
+        SkuInfoEntity skuInfoEntity = skuInfoService.getById(skuId);
+        return R.ok().setData(skuInfoEntity.getPrice().toString());
+    }
+
+    @RequestMapping("/aa/{nn}")
+    public String list(@PathVariable("nn") Long nn){
+        String ok = "ok"+nn;
+        return ok;
+    }
     @RequestMapping("/list")
 //    @RequiresPermissions("product:skuinfo:list")
     public R list(@RequestParam Map<String, Object> params){
@@ -57,11 +69,14 @@ public class SkuInfoController {
     /**
      * 保存
      */
+    /**
+     * 保存
+     */
     @RequestMapping("/save")
-//    @RequiresPermissions("product:skuinfo:save")
-    public R save(@RequestBody SkuInfoEntity skuInfo){
-		skuInfoService.save(skuInfo);
-
+    public R save(@RequestBody SpuSaveVo spuSaveVo){
+        System.out.println("save 接口被执行");
+        spuInfoService.saveSpuInfo(spuSaveVo);
+        System.out.println("save 接口被执行");
         return R.ok();
     }
 

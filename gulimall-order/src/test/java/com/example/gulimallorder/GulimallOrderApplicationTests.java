@@ -1,6 +1,7 @@
 package com.example.gulimallorder;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

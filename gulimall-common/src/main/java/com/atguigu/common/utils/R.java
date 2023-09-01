@@ -8,8 +8,12 @@
 
 package com.atguigu.common.utils;
 
+import com.alibaba.fastjson.JSON;
+
+import com.alibaba.fastjson.TypeReference;
 import org.apache.http.HttpStatus;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,6 +63,43 @@ public class R extends HashMap<String, Object> {
 
 	public R put(String key, Object value) {
 		super.put(key, value);
+		return this;
+	}
+
+	public Integer getCode(){
+		return Integer.parseInt((String) this.get("code"));
+	}
+	public Integer getCode1(){
+		return (Integer) this.get("code");
+	}
+
+
+	public  <T> T getData(String key, TypeReference<T> typeReference) {
+		Object data = get(key); // 默认是map类型，springmvc做的
+		String jsonStr = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonStr, typeReference.getType());
+		return t;
+	}
+
+//	public <T> T getData(String key, Type typeReference) {
+//		Object data = get(key);// 默认是map类型，springmvc做的
+//		String jsonStr = JSON.toJSONString(data);
+//		T t = JSON.parseObject(jsonStr, (Type) typeReference);
+//		return t;
+//	}
+
+	// 利用fastJson进行逆转
+	// 这里要声明泛型<T>，这个泛型只跟方法有关，跟类无关。
+	// 例如类上有个泛型，这里可以使用类上的泛型，就不用声明
+	public <T> T getData(TypeReference<T> typeReference) {
+		Object data = get("data");// 默认是map类型，springmvc做的
+		String jsonStr = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonStr, typeReference.getType());
+		return t;
+	}
+
+	public R setData(Object data) {
+		put("data", data);
 		return this;
 	}
 }
