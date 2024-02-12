@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: ShopTalk-third-party
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml # ???????yaml??
+        namespace: 4bac0867-1516-403f-94b4-d05da6604e67
+        extension-configs:
+          - dataId: oss.yml
+            group: DEFAULT_GROUP
+            refresh: true
+
+
+
+

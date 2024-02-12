@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ShopTalk-product
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml # ???????yaml??
+        namespace: 552c4aea-263d-4369-b57d-d1f48ae1eb86
+
+

@@ -1,0 +1,23 @@
+# ??????nacos???????
+spring:
+  application:
+    name: ShopTalk-coupon
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml # ???????yaml??
+        namespace: 5fb0211e-f981-469e-a66a-875c468dc8ab
+        group: dev
+        extension-configs:
+          - dataId: datasource.yml
+            group: dev
+            refresh: true
+          - dataId: mybatis.yml
+            group: dev
+            refresh: true
+          - dataId: other.yml
+            group: dev
+            refresh: true
+
+

@@ -54,7 +54,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.example</groupId>
-			<artifactId>gulimall-common</artifactId>
+			<artifactId>ShopTalk-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

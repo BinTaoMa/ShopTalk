@@ -1,0 +1,30 @@
+server:
+  port: 25000
+spring:
+  application:
+    name: ShopTalk-seckill
+  cloud:
+      nacos:
+        server-addr: 127.0.0.1:8848
+  redis:
+    host: 192.168.222.136
+    port: 6379
+    client-type: jedis
+  session:
+    store-type: redis
+  rabbitmq:
+    host: 192.168.222.136
+    port: 5672
+    virtual-host: /
+    username: guest
+    password: guest
+    publisher-returns: true
+    template:
+      mandatory: true
+
+  task:
+    execution:
+      pool:
+        core-size: 8  #默认大小为8
+        max-size: 50  #默认最大为int
+
